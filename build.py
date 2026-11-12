@@ -12,7 +12,7 @@ html_content = f"""<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bé Vui Đoán Số 🎈 - Giọng Nữ Miền Nam Chuẩn</title>
+  <title>Bé Vui Học Tập 🎈 - Bé Đoán Số & Đố Ký Tự</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Sigmar&display=swap" rel="stylesheet">
@@ -24,6 +24,8 @@ html_content = f"""<!DOCTYPE html>
       --primary: #FF5E7E;
       --secondary: #4facfe;
       --accent: #FFA000;
+      --success: #2e7d32;
+      --danger: #d32f2f;
       --bg-gradient: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 50%, #fed6e3 100%);
     }}
 
@@ -61,31 +63,15 @@ html_content = f"""<!DOCTYPE html>
       background: inherit;
       border-radius: 50%;
     }}
-    .cloud-1 {{
-      width: 140px; height: 45px;
-      top: 12%; left: -160px;
-      animation-duration: 35s;
-    }}
+    .cloud-1 {{ width: 140px; height: 45px; top: 12%; left: -160px; animation-duration: 35s; }}
     .cloud-1::before {{ width: 50px; height: 50px; top: -22px; left: 25px; }}
     .cloud-1::after {{ width: 70px; height: 70px; top: -35px; right: 25px; }}
 
-    .cloud-2 {{
-      width: 180px; height: 55px;
-      top: 35%; left: -200px;
-      animation-duration: 45s;
-      animation-delay: 15s;
-      opacity: 0.6;
-    }}
+    .cloud-2 {{ width: 180px; height: 55px; top: 35%; left: -200px; animation-duration: 45s; animation-delay: 15s; opacity: 0.6; }}
     .cloud-2::before {{ width: 60px; height: 60px; top: -30px; left: 30px; }}
     .cloud-2::after {{ width: 85px; height: 85px; top: -45px; right: 35px; }}
 
-    .cloud-3 {{
-      width: 120px; height: 40px;
-      top: 75%; left: -150px;
-      animation-duration: 28s;
-      animation-delay: 7s;
-      opacity: 0.8;
-    }}
+    .cloud-3 {{ width: 120px; height: 40px; top: 75%; left: -150px; animation-duration: 28s; animation-delay: 7s; opacity: 0.8; }}
     .cloud-3::before {{ width: 45px; height: 45px; top: -20px; left: 20px; }}
     .cloud-3::after {{ width: 55px; height: 55px; top: -25px; right: 20px; }}
 
@@ -99,188 +85,288 @@ html_content = f"""<!DOCTYPE html>
       position: relative;
       z-index: 5;
       width: 100%;
-      max-width: 900px;
-      padding: 1.2rem;
+      max-width: 960px;
+      padding: 1rem 1.2rem 3rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
     }}
 
-    /* Header thanh trạng thái */
-    .game-header {{
+    /* Thanh Điều Hướng Menu Toàn Cục */
+    .nav-bar {{
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px);
-      padding: 0.8rem 1.4rem;
-      border-radius: 30px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 0 0 2px rgba(255, 255, 255, 0.9);
-      margin-bottom: 1.2rem;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      padding: 0.7rem 1.4rem;
+      border-radius: 35px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 0 0 2px rgba(255, 255, 255, 0.95);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 10px;
     }}
 
-    .badge-item {{
+    .nav-brand {{
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #333;
+      font-family: 'Sigmar', cursive;
+      font-size: 1.35rem;
+      color: #FF5E7E;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s;
     }}
-    .badge-icon {{
-      font-size: 1.6rem;
-      display: inline-block;
-      animation: pulse 2s infinite ease-in-out;
+    .nav-brand:hover {{
+      transform: scale(1.04);
     }}
 
-    .round-indicator {{
-      background: linear-gradient(135deg, #FF6B6B, #FF8E53);
-      color: white;
-      padding: 6px 18px;
+    .nav-links {{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }}
+
+    .nav-btn {{
+      background: #f1f5f9;
+      color: #334155;
+      border: 1.5px solid transparent;
+      padding: 7px 16px;
       border-radius: 20px;
-      font-weight: 800;
-      font-size: 1.05rem;
-      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.35);
-    }}
-
-    .audio-badge {{
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
-      background: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #a5d6a7;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 0.88rem;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }}
+    .nav-btn:hover {{
+      background: #e2e8f0;
+      transform: translateY(-2px);
+    }}
+    .nav-btn.active {{
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
     }}
 
-    /* Màn hình */
+    /* Các màn hình chính (Screens) */
     .screen {{
       width: 100%;
       display: none;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      animation: fadeIn 0.4s ease-out;
+      animation: fadeIn 0.35s ease-out;
     }}
     .screen.active {{
       display: flex;
     }}
 
     @keyframes fadeIn {{
-      from {{ opacity: 0; transform: translateY(15px); }}
+      from {{ opacity: 0; transform: translateY(14px); }}
       to {{ opacity: 1; transform: translateY(0); }}
     }}
 
-    .hero-title {{
+    /* =========================================================
+     *  MÀN HÌNH TRANG CHỦ / MENU CHỌN TRÒ CHƠI
+     * ========================================================= */
+    .home-hero {{
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+    }}
+    .home-title {{
       font-family: 'Sigmar', cursive;
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      background: linear-gradient(135deg, #FF1361, #FFF800);
+      font-size: clamp(2.3rem, 5.5vw, 3.6rem);
+      background: linear-gradient(135deg, #FF1361, #FFA000);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 4px 8px rgba(255, 19, 97, 0.25));
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
       letter-spacing: 1px;
     }}
-
-    .hero-badge {{
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #fff0f6;
-      border: 1.5px solid #ffadd2;
-      color: #c41d7f;
-      padding: 6px 18px;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 12px rgba(255, 173, 210, 0.3);
-    }}
-
-    .hero-desc {{
+    .home-desc {{
       font-size: 1.25rem;
       font-weight: 600;
-      color: #3f5175;
-      max-width: 580px;
-      margin-bottom: 1.8rem;
+      color: #334155;
+      max-width: 620px;
       line-height: 1.6;
     }}
 
-    .mascot-box {{
-      position: relative;
-      width: 170px;
-      height: 170px;
-      margin-bottom: 1.8rem;
-      animation: floatMascot 3s ease-in-out infinite;
-    }}
-    @keyframes floatMascot {{
-      0%, 100% {{ transform: translateY(0) rotate(0deg); }}
-      50% {{ transform: translateY(-15px) rotate(4deg); }}
+    .game-cards-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+      width: 100%;
+      max-width: 860px;
+      margin-top: 0.5rem;
     }}
 
-    .btn-play-large {{
-      background: linear-gradient(135deg, #00b09b, #96c93d);
-      color: white;
-      border: none;
-      outline: none;
-      padding: 1.1rem 2.8rem;
-      font-size: 1.55rem;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 800;
-      border-radius: 50px;
+    .game-card {{
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 35px;
+      padding: 2.2rem 1.8rem;
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.08), 0 0 0 3px rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
       cursor: pointer;
-      box-shadow: 0 12px 25px rgba(0, 176, 155, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.5);
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }}
+    .game-card:hover {{
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 24px 45px rgba(0, 0, 0, 0.14), 0 0 0 4px rgba(255, 255, 255, 1);
+    }}
+
+    .game-card-icon {{
+      width: 90px;
+      height: 90px;
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }}
+    .game-card:hover .game-card-icon {{
+      transform: scale(1.12) rotate(6deg);
+    }}
+
+    .card-theme-1 .game-card-icon {{
+      background: linear-gradient(135deg, #ff758c, #ff4070);
+    }}
+    .card-theme-2 .game-card-icon {{
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+    }}
+
+    .game-card-badge {{
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 14px;
+      text-transform: uppercase;
+    }}
+    .badge-hot {{
+      background: #ffe3e3;
+      color: #e03131;
+    }}
+    .badge-new {{
+      background: #d3f9d8;
+      color: #2b8a3e;
+      border: 1px solid #b2f2bb;
+    }}
+
+    .game-card-title {{
+      font-family: 'Sigmar', cursive;
+      font-size: 1.7rem;
+      color: #1e293b;
+      margin-bottom: 0.6rem;
+    }}
+
+    .game-card-info {{
+      font-size: 1.05rem;
+      color: #64748b;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 1.6rem;
+      flex-grow: 1;
+    }}
+
+    .btn-card-action {{
+      width: 100%;
+      border: none;
+      padding: 0.95rem 1.8rem;
+      border-radius: 25px;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: white;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
     }}
-    .btn-play-large:hover {{
-      transform: scale(1.08) translateY(-4px);
-      box-shadow: 0 16px 30px rgba(0, 176, 155, 0.5);
+    .card-theme-1 .btn-card-action {{
+      background: linear-gradient(135deg, #FF5E7E, #FF8E53);
+      box-shadow: 0 8px 18px rgba(255, 94, 126, 0.35);
     }}
-    .btn-play-large:active {{
-      transform: scale(0.96);
+    .card-theme-2 .btn-card-action {{
+      background: linear-gradient(135deg, #38ef7d, #11998e);
+      box-shadow: 0 8px 18px rgba(17, 153, 142, 0.35);
+    }}
+    .btn-card-action:hover {{
+      filter: brightness(1.08);
+      transform: scale(1.02);
     }}
 
-    /* Gameplay */
+    /* =========================================================
+     *  TRÒ CHƠI 1: BÉ VUI ĐOÁN SỐ (1 - 10)
+     * ========================================================= */
+    .game1-header {{
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.7rem 1.4rem;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      margin-bottom: 1.2rem;
+    }}
+    .score-badge {{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #333;
+    }}
+    .round-tag {{
+      background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+      color: white;
+      padding: 5px 16px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 1rem;
+    }}
+
     .speaker-section {{
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
-      padding: 1.5rem 2rem;
+      padding: 1.4rem 2rem;
       border-radius: 35px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), 0 0 0 3px rgba(255, 255, 255, 0.85);
       width: 100%;
       max-width: 650px;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.6rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
-    }}
-
-    .voice-prompt {{
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #2b3a4a;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }}
 
     .speaker-btn {{
       position: relative;
       background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
       border: none;
-      width: 95px;
-      height: 95px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
@@ -289,53 +375,23 @@ html_content = f"""<!DOCTYPE html>
       box-shadow: 0 10px 25px rgba(255, 107, 107, 0.45);
       transition: transform 0.2s;
     }}
-    .speaker-btn:hover {{
-      transform: scale(1.06);
-    }}
-    .speaker-btn:active {{
-      transform: scale(0.95);
-    }}
-
-    .speaker-btn::before,
-    .speaker-btn::after {{
+    .speaker-btn:hover {{ transform: scale(1.06); }}
+    .speaker-btn:active {{ transform: scale(0.95); }}
+    .speaker-btn::before, .speaker-btn::after {{
       content: '';
       position: absolute;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       border-radius: 50%;
       background: rgba(255, 107, 107, 0.4);
       z-index: -1;
       opacity: 0;
     }}
-    .speaker-btn.speaking::before {{
-      animation: ripple 1.2s ease-out infinite;
-    }}
-    .speaker-btn.speaking::after {{
-      animation: ripple 1.2s ease-out 0.4s infinite;
-    }}
+    .speaker-btn.speaking::before {{ animation: ripple 1.2s ease-out infinite; }}
+    .speaker-btn.speaking::after {{ animation: ripple 1.2s ease-out 0.4s infinite; }}
 
     @keyframes ripple {{
       0% {{ transform: scale(1); opacity: 0.85; }}
       100% {{ transform: scale(1.8); opacity: 0; }}
-    }}
-
-    .speaker-icon-svg {{
-      width: 48px;
-      height: 48px;
-      fill: white;
-    }}
-
-    .speaker-subtext {{
-      margin-top: 12px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #e65100;
-      background: #fff3e0;
-      padding: 6px 18px;
-      border-radius: 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }}
 
     .bubble-arena {{
@@ -345,22 +401,22 @@ html_content = f"""<!DOCTYPE html>
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 1.6rem;
-      padding: 0.8rem 0 1.8rem;
-      min-height: 240px;
+      gap: 1.5rem;
+      padding: 0.8rem 0 1.5rem;
+      min-height: 230px;
     }}
 
     .number-bubble {{
       position: relative;
-      width: 120px;
-      height: 120px;
+      width: 115px;
+      height: 115px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       font-family: 'Sigmar', cursive;
-      font-size: 3.2rem;
+      font-size: 3.1rem;
       color: white;
       text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15),
@@ -369,43 +425,20 @@ html_content = f"""<!DOCTYPE html>
       transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s;
       animation: bubbleFloat 4s ease-in-out infinite alternate;
     }}
-
     .number-bubble::after {{
       content: '';
       position: absolute;
-      top: 12%;
-      left: 20%;
-      width: 32px;
-      height: 18px;
+      top: 12%; left: 20%;
+      width: 30px; height: 16px;
       background: rgba(255, 255, 255, 0.7);
       border-radius: 50%;
       transform: rotate(-35deg);
       filter: blur(1px);
       pointer-events: none;
     }}
-
-    .number-bubble::before {{
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      width: 10px;
-      height: 8px;
-      background: inherit;
-      border-radius: 3px 3px 6px 6px;
-      filter: brightness(0.85);
-    }}
-
     .number-bubble:hover {{
       transform: scale(1.15) translateY(-8px);
-      box-shadow: 0 22px 38px rgba(0, 0, 0, 0.22),
-                  inset -8px -8px 16px rgba(0, 0, 0, 0.2),
-                  inset 12px 12px 24px rgba(255, 255, 255, 0.75);
     }}
-
-    .number-bubble:active {{
-      transform: scale(0.95);
-    }}
-
     .bubble-theme-1 {{ background: radial-gradient(circle at 35% 35%, #ff758c, #ff4070); animation-delay: 0s; }}
     .bubble-theme-2 {{ background: radial-gradient(circle at 35% 35%, #4facfe, #00f2fe); animation-delay: 0.6s; }}
     .bubble-theme-3 {{ background: radial-gradient(circle at 35% 35%, #43e97b, #38f9d7); animation-delay: 1.2s; }}
@@ -471,13 +504,394 @@ html_content = f"""<!DOCTYPE html>
       box-shadow: 0 8px 20px rgba(255, 107, 107, 0.2);
     }}
 
-    .summary-card {{
+    /* =========================================================
+     *  TRÒ CHƠI 2: ĐÂY LÀ SỐ GÌ? ĐÂY LÀ CHỮ GÌ? (TÍNH NĂNG MỚI)
+     * ========================================================= */
+    .game2-card-container {{
+      width: 100%;
+      max-width: 880px;
       background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-radius: 35px;
+      padding: 2rem;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08), 0 0 0 3px rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }}
+
+    .game2-title {{
+      font-family: 'Sigmar', cursive;
+      font-size: 2.2rem;
+      background: linear-gradient(135deg, #0284c7, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.4rem;
+    }}
+
+    .game2-subdesc {{
+      color: #475569;
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      max-width: 650px;
+      line-height: 1.5;
+    }}
+
+    /* Bảng thiết lập của Phụ huynh */
+    .parent-config-box {{
+      width: 100%;
+      background: #f8fafc;
+      border: 2px dashed #cbd5e1;
+      border-radius: 25px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }}
+
+    .parent-config-header {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }}
+    .parent-badge {{
+      background: #e0e7ff;
+      color: #4338ca;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 4px 12px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }}
+
+    .char-input-group {{
+      margin-bottom: 1.2rem;
+    }}
+    .char-input-group label {{
+      display: block;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }}
+    .char-input-field {{
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border-radius: 18px;
+      border: 2px solid #cbd5e1;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #0f172a;
+      background: white;
+      outline: none;
+      transition: border-color 0.2s;
+    }}
+    .char-input-field:focus {{
+      border-color: #6366f1;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    }}
+
+    /* Nút chọn nhanh Presets */
+    .preset-chips-container {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 1.4rem;
+    }}
+    .preset-chip {{
+      background: white;
+      border: 1.5px solid #e2e8f0;
+      color: #475569;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }}
+    .preset-chip:hover {{
+      background: #f1f5f9;
+      border-color: #6366f1;
+      color: #4338ca;
+      transform: translateY(-2px);
+    }}
+
+    .btn-start-quiz {{
+      background: linear-gradient(135deg, #6366f1, #3b82f6);
+      color: white;
+      border: none;
+      padding: 1rem 2.2rem;
+      border-radius: 30px;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.35);
+      transition: all 0.25s;
+    }}
+    .btn-start-quiz:hover {{
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 25px rgba(99, 102, 241, 0.45);
+    }}
+
+    /* Vùng Đố Bé (Interactive Flashcards Grid) */
+    .quiz-active-area {{
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }}
+    .quiz-active-area.show {{
+      display: flex;
+    }}
+
+    .quiz-stats-bar {{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8fafc;
+      padding: 0.8rem 1.4rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      border: 1.5px solid #e2e8f0;
+      flex-wrap: wrap;
+      gap: 10px;
+    }}
+    .quiz-stat-item {{
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }}
+
+    /* Lưới các thẻ ký tự (Character Cards) */
+    .char-cards-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.4rem;
+      width: 100%;
+      margin-bottom: 2rem;
+    }}
+
+    /* Từng thẻ ký tự 3D với hiệu ứng Hover phát âm */
+    .char-card {{
+      background: white;
+      border-radius: 28px;
+      padding: 1.2rem 1rem;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07), 0 0 0 2px #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }}
+
+    .char-card:hover {{
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12), 0 0 0 3px #6366f1;
+    }}
+
+    /* Khi đang phát giọng đọc hỏi thẻ này */
+    .char-card.hover-speaking {{
+      animation: cardPulse 1.2s infinite alternate;
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 4px #fbbf24, 0 15px 30px rgba(245, 158, 11, 0.25);
+    }}
+    @keyframes cardPulse {{
+      from {{ transform: scale(1.02); }}
+      to {{ transform: scale(1.08); }}
+    }}
+
+    /* Trạng thái đã được phụ huynh đánh giá */
+    .char-card.evaluated-correct {{
+      background: #f0fdf4;
+      border-color: #22c55e !important;
+      box-shadow: 0 10px 24px rgba(34, 197, 94, 0.18), 0 0 0 2px #86efac;
+    }}
+    .char-card.evaluated-wrong {{
+      background: #fef2f2;
+      border-color: #ef4444 !important;
+      box-shadow: 0 10px 24px rgba(239, 68, 68, 0.18), 0 0 0 2px #fca5a5;
+    }}
+
+    /* Huy hiệu loại ký tự (Số / Chữ) */
+    .char-type-pill {{
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }}
+    .pill-number {{
+      background: #e0f2fe;
+      color: #0369a1;
+    }}
+    .pill-letter {{
+      background: #fce7f3;
+      color: #be185d;
+    }}
+
+    /* Ký tự lớn nổi bật */
+    .char-glyph {{
+      font-family: 'Sigmar', cursive;
+      font-size: 4.6rem;
+      line-height: 1.1;
+      margin: 0.4rem 0 0.8rem;
+      color: #1e293b;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }}
+    .char-card:hover .char-glyph {{
+      transform: scale(1.1);
+    }}
+    .char-card.evaluated-correct .char-glyph {{
+      color: #15803d;
+    }}
+    .char-card.evaluated-wrong .char-glyph {{
+      color: #b91c1c;
+    }}
+
+    /* Biểu tượng loa khi hover */
+    .hover-speaker-hint {{
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 0.8rem;
+      background: #f8fafc;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }}
+
+    /* Khu vực Phụ Huynh Đánh Giá */
+    .parent-eval-controls {{
+      width: 100%;
+      border-top: 1.5px solid #f1f5f9;
+      padding-top: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }}
+    .eval-label {{
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #94a3b8;
+      text-align: center;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }}
+    .eval-btn-group {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }}
+    .btn-eval {{
+      border: none;
+      padding: 7px 10px;
+      border-radius: 14px;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }}
+    .btn-eval-correct {{
+      background: #dcfce7;
+      color: #166534;
+      border: 1.5px solid #86efac;
+    }}
+    .btn-eval-correct:hover, .btn-eval-correct.selected {{
+      background: #22c55e;
+      color: white;
+      border-color: #16a34a;
+      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.35);
+    }}
+
+    .btn-eval-wrong {{
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1.5px solid #fca5a5;
+    }}
+    .btn-eval-wrong:hover, .btn-eval-wrong.selected {{
+      background: #ef4444;
+      color: white;
+      border-color: #dc2626;
+      box-shadow: 0 4px 10px rgba(239, 68, 68, 0.35);
+    }}
+
+    /* Nút nghe đáp án mẫu */
+    .btn-reveal-sample {{
+      background: #f1f5f9;
+      border: none;
+      padding: 5px 8px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: all 0.15s;
+    }}
+    .btn-reveal-sample:hover {{
+      background: #e2e8f0;
+      color: #0f172a;
+    }}
+
+    /* Nút hoàn thành bài đố */
+    .btn-finish-quiz {{
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 30px;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 22px rgba(16, 185, 129, 0.35);
+      transition: all 0.25s;
+    }}
+    .btn-finish-quiz:hover {{
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 28px rgba(16, 185, 129, 0.45);
+    }}
+
+    /* Màn hình tổng kết (Summary) */
+    .summary-card {{
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(15px);
       padding: 2.5rem 2rem;
       border-radius: 40px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12), 0 0 0 4px rgba(255, 255, 255, 0.8);
-      max-width: 520px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12), 0 0 0 4px rgba(255, 255, 255, 0.85);
+      max-width: 580px;
       width: 100%;
       margin-top: 1rem;
       display: flex;
@@ -485,7 +899,6 @@ html_content = f"""<!DOCTYPE html>
       align-items: center;
       animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }}
-
     @keyframes popIn {{
       0% {{ opacity: 0; transform: scale(0.7); }}
       100% {{ opacity: 1; transform: scale(1); }}
@@ -500,61 +913,43 @@ html_content = f"""<!DOCTYPE html>
       to {{ transform: translateY(-12px); }}
     }}
 
-    .final-score {{
-      font-size: 2.6rem;
-      font-family: 'Sigmar', cursive;
-      color: #FF5E7E;
-      margin: 0.8rem 0;
+    .summary-stats-box {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+      margin: 1.2rem 0;
     }}
-
-    .final-comment {{
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #4a5568;
-      margin-bottom: 2rem;
+    .stat-pill-box {{
+      padding: 1rem;
+      border-radius: 20px;
+      text-align: center;
+    }}
+    .box-green {{
+      background: #f0fdf4;
+      border: 2px solid #bbf7d0;
+      color: #166534;
+    }}
+    .box-red {{
+      background: #fef2f2;
+      border: 2px solid #fecaca;
+      color: #991b1b;
     }}
 
     #fireworksCanvas {{
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       pointer-events: none;
       z-index: 999;
     }}
 
-    .controls-row {{
-      display: flex;
-      gap: 12px;
-      margin-top: 1.2rem;
-      align-items: center;
-    }}
-    .icon-btn {{
-      background: white;
-      border: none;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-      font-size: 1.4rem;
-    }}
-    .icon-btn:hover {{
-      transform: scale(1.1);
-    }}
-
     @media (max-width: 600px) {{
-      .app-container {{ padding: 0.8rem; }}
-      .game-header {{ padding: 0.6rem 0.9rem; }}
-      .badge-item {{ font-size: 0.95rem; }}
-      .speaker-section {{ padding: 1.2rem 1rem; }}
-      .bubble-arena {{ gap: 1rem; }}
-      .number-bubble {{ width: 95px; height: 95px; font-size: 2.6rem; }}
+      .app-container {{ padding: 0.6rem; }}
+      .nav-bar {{ padding: 0.6rem 1rem; }}
+      .game2-card-container {{ padding: 1.2rem 0.9rem; }}
+      .char-cards-grid {{ grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }}
+      .char-glyph {{ font-size: 3.6rem; }}
     }}
   </style>
 </head>
@@ -568,105 +963,222 @@ html_content = f"""<!DOCTYPE html>
 
   <div class="app-container">
 
-    <header class="game-header">
-      <div class="badge-item">
-        <span class="badge-icon">⭐</span>
-        <span>Điểm: <strong id="scoreVal" style="color: #FF6B6B">0</strong></span>
+    <!-- THANH ĐIỀU HƯỚNG MENU TOÀN CỤC -->
+    <nav class="nav-bar">
+      <div class="nav-brand" id="btnNavHome">
+        <span>🎈</span>
+        <span>BÉ VUI HỌC TẬP</span>
       </div>
 
-      <div class="round-indicator" id="roundIndicator">
-        Vòng 1 / 10
-      </div>
-
-      <div class="audio-badge">
-        <span>🔊</span>
-        <span>Giọng Nữ Miền Nam</span>
-      </div>
-    </header>
-
-    <!-- 1. MÀN HÌNH BẮT ĐẦU -->
-    <section class="screen active" id="startScreen">
-      <div class="hero-badge">
-        <span>👩‍🏫 Giọng Đọc Cô Giáo Miền Nam Chuẩn Tự Nhiên</span>
-      </div>
-      
-      <h1 class="hero-title">BÉ VUI ĐOÁN SỐ</h1>
-      <p class="hero-desc">
-        Chào bé nghen! Cùng cô lắng nghe số bí mật từ <strong>1 đến 10</strong> rồi chạm vô quả bóng bay đúng nha! 🎈
-      </p>
-
-      <div class="mascot-box">
-        <svg viewBox="0 0 120 120" width="100%" height="100%">
-          <circle cx="60" cy="65" r="42" fill="#f6b26b" stroke="#d58b38" stroke-width="3"/>
-          <circle cx="30" cy="30" r="16" fill="#f6b26b" stroke="#d58b38" stroke-width="3"/>
-          <circle cx="30" cy="30" r="9" fill="#ffb4a2"/>
-          <circle cx="90" cy="30" r="16" fill="#f6b26b" stroke="#d58b38" stroke-width="3"/>
-          <circle cx="90" cy="30" r="9" fill="#ffb4a2"/>
-          <circle cx="48" cy="58" r="6" fill="#2d3748"/>
-          <circle cx="50" cy="56" r="2" fill="#ffffff"/>
-          <circle cx="72" cy="58" r="6" fill="#2d3748"/>
-          <circle cx="74" cy="56" r="2" fill="#ffffff"/>
-          <circle cx="38" cy="68" r="7" fill="#ff8a80" opacity="0.6"/>
-          <circle cx="82" cy="68" r="7" fill="#ff8a80" opacity="0.6"/>
-          <ellipse cx="60" cy="72" rx="14" ry="10" fill="#fffaf0"/>
-          <ellipse cx="60" cy="68" rx="5" ry="3.5" fill="#5d4037"/>
-          <path d="M 57 74 Q 60 78 63 74" stroke="#5d4037" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        </svg>
-      </div>
-
-      <button class="btn-play-large" id="btnStartGame">
-        <span>🎮 BẮT ĐẦU CHƠI NÈ!</span>
-      </button>
-
-      <div class="controls-row">
-        <button class="icon-btn" id="btnSoundTest" title="Nghe cô chào nè">
-          🔊
+      <div class="nav-links">
+        <button class="nav-btn active" id="btnNavMenu">
+          <span>🏠 Menu Trò Chơi</span>
         </button>
-        <span style="font-size: 1rem; font-weight: 700; color: #4b5563;">Bấm loa để nghe cô chào bé nha!</span>
+        <button class="nav-btn" id="btnNavGame1">
+          <span>🎈 Trò 1: Đoán Số (1-10)</span>
+        </button>
+        <button class="nav-btn" id="btnNavGame2">
+          <span>🔤 Trò 2: Đố Số & Chữ</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- =========================================================
+         MÀN HÌNH 0: MENU CHỌN TRÒ CHƠI (HOME HUB)
+         ========================================================= -->
+    <section class="screen active" id="screenHome">
+      <div class="home-hero">
+        <h1 class="home-title">GÓC HỌC TẬP VUI NHỘN</h1>
+        <p class="home-desc">
+          Chào mừng các bé và ba mẹ! Hãy chọn trò chơi yêu thích bên dưới để cùng luyện nghe, luyện mắt và phát âm thật chuẩn nhé!
+        </p>
+      </div>
+
+      <div class="game-cards-grid">
+        <!-- Card Trò chơi 1 -->
+        <div class="game-card card-theme-1" id="cardChooseGame1">
+          <div class="game-card-badge badge-hot">Rất Vui ⭐</div>
+          <div class="game-card-icon">🎈</div>
+          <h2 class="game-card-title">Bé Vui Đoán Số</h2>
+          <p class="game-card-info">
+            Lắng nghe giọng đọc bí mật từ <strong>1 đến 10</strong>, nhanh tay chọn bong bóng đúng để bắn pháo hoa rực rỡ chúc mừng!
+          </p>
+          <button class="btn-card-action">
+            <span>🎮 CHƠI ĐOÁN SỐ</span>
+            <span>➔</span>
+          </button>
+        </div>
+
+        <!-- Card Trò chơi 2 (Tính năng mới) -->
+        <div class="game-card card-theme-2" id="cardChooseGame2">
+          <div class="game-card-badge badge-new">Mới Ra Mắt ✨</div>
+          <div class="game-card-icon">🔤</div>
+          <h2 class="game-card-title">Đố Bé: Số Gì? Chữ Gì?</h2>
+          <p class="game-card-info">
+            Người lớn nhập số (0-9) hoặc chữ (A-Z). Khi <strong>di chuột vào</strong> ký tự sẽ có giọng đọc hỏi, phụ huynh nghe bé trả lời và đánh giá ✔️ / ❌!
+          </p>
+          <button class="btn-card-action">
+            <span>👨‍👩‍👧 VÀO ĐỐ BÉ NGAY</span>
+            <span>➔</span>
+          </button>
+        </div>
       </div>
     </section>
 
-    <!-- 2. MÀN HÌNH CHƠI CHÍNH -->
-    <section class="screen" id="gameScreen">
+    <!-- =========================================================
+         MÀN HÌNH 1: TRÒ CHƠI 1 - BÉ VUI ĐOÁN SỐ (1-10)
+         ========================================================= -->
+    <section class="screen" id="screenGame1">
+      <div class="game1-header">
+        <div class="score-badge">
+          <span>⭐</span>
+          <span>Điểm: <strong id="scoreVal1" style="color: #FF5E7E">0</strong></span>
+        </div>
+        <div class="round-tag" id="roundIndicator1">
+          Vòng 1 / 10
+        </div>
+        <button class="nav-btn" id="btnBackToHomeFromG1" style="padding: 4px 12px; font-size: 0.88rem;">
+          🏠 Đổi Trò Chơi
+        </button>
+      </div>
+
       <div class="speaker-section">
-        <div class="voice-prompt">
-          <span>🎧 Bé bấm vô loa để nghe số bí mật nè:</span>
+        <div style="font-size: 1.3rem; font-weight: 700; color: #2b3a4a; margin-bottom: 0.8rem;">
+          🎧 Bé bấm vô loa để nghe số bí mật nè:
         </div>
 
-        <button class="speaker-btn" id="btnSpeakNumber" title="Bấm nghe lại số bí mật nghen">
-          <svg class="speaker-icon-svg" viewBox="0 0 24 24">
+        <button class="speaker-btn" id="btnSpeakNumber1" title="Bấm nghe lại số bí mật nghen">
+          <svg style="width: 46px; height: 46px; fill: white;" viewBox="0 0 24 24">
             <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
           </svg>
         </button>
 
-        <span class="speaker-subtext" id="speakerStatus">Bấm loa để nghe lại nghen bé!</span>
+        <span style="margin-top: 10px; font-size: 1rem; font-weight: 700; color: #e65100; background: #fff3e0; padding: 5px 16px; border-radius: 14px;">
+          Bấm loa để nghe lại nghen bé!
+        </span>
       </div>
 
-      <div class="bubble-arena" id="bubbleArena"></div>
+      <div class="bubble-arena" id="bubbleArena1"></div>
 
-      <div class="feedback-banner" id="feedbackBanner">
-        <span id="feedbackIcon">🎉</span>
-        <span id="feedbackText">Bé giỏi quá chừng luôn!</span>
+      <div class="feedback-banner" id="feedbackBanner1">
+        <span id="feedbackIcon1">🎉</span>
+        <span id="feedbackText1">Bé giỏi quá chừng luôn!</span>
       </div>
     </section>
 
-    <!-- 3. MÀN HÌNH KẾT THÚC -->
-    <section class="screen" id="summaryScreen">
+    <!-- =========================================================
+         MÀN HÌNH 2: TRÒ CHƠI 2 - ĐÂY LÀ SỐ GÌ? ĐÂY LÀ CHỮ GÌ?
+         ========================================================= -->
+    <section class="screen" id="screenGame2">
+      <div class="game2-card-container">
+        <h1 class="game2-title">ĐÂY LÀ SỐ GÌ? ĐÂY LÀ CHỮ GÌ?</h1>
+        <p class="game2-subdesc">
+          Trò chơi tương tác giữa phụ huynh và bé: Người lớn nhập danh sách số (0-9) hoặc chữ (A-Z). Khi <strong>di chuột vào</strong> ký tự, giọng đọc sẽ cất lên câu hỏi để bé trả lời!
+        </p>
+
+        <!-- BẢNG CÀI ĐẶT DÀNH CHO PHỤ HUYNH -->
+        <div class="parent-config-box" id="parentConfigBox">
+          <div class="parent-config-header">
+            <div class="parent-badge">
+              <span>👨‍👩‍👧 DÀNH CHO PHỤ HUYNH THIẾT LẬP</span>
+            </div>
+            <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;">Hỗ trợ số 0-9 & chữ cái A-Z</span>
+          </div>
+
+          <div class="char-input-group">
+            <label for="inputCustomChars">Nhập danh sách số hoặc chữ cần hỏi bé:</label>
+            <input type="text" id="inputCustomChars" class="char-input-field" placeholder="Ví dụ: 0, 5, 8, A, B, C, M, N (hoặc bấm chọn nhanh bên dưới)" value="0, 1, 2, 5, 9, A, B, C, D, E">
+          </div>
+
+          <!-- Nút chọn nhanh (Presets) -->
+          <div style="font-weight: 700; font-size: 0.9rem; color: #475569; margin-bottom: 6px;">Chọn nhanh bộ ký tự có sẵn:</div>
+          <div class="preset-chips-container">
+            <button class="preset-chip" data-preset="digits_all">🔢 Tất cả số (0 - 9)</button>
+            <button class="preset-chip" data-preset="letters_az">🔤 Bảng chữ cái (A - Z)</button>
+            <button class="preset-chip" data-preset="vowels">🌟 Nguyên âm (A, E, I, O, U)</button>
+            <button class="preset-chip" data-preset="rand_5">🎲 Ngẫu nhiên 5 ký tự</button>
+            <button class="preset-chip" data-preset="rand_10">🎲 Ngẫu nhiên 10 ký tự</button>
+            <button class="preset-chip" data-preset="mix_common">🎈 Số & Chữ cơ bản</button>
+          </div>
+
+          <button class="btn-start-quiz" id="btnStartQuiz">
+            <span>🚀 BẮT ĐẦU ĐỐ BÉ NGAY</span>
+          </button>
+        </div>
+
+        <!-- VÙNG BÀI ĐỐ CHO BÉ (HIỆN KHI ĐÃ BẤM BẮT ĐẦU) -->
+        <div class="quiz-active-area" id="quizActiveArea">
+          <div class="quiz-stats-bar">
+            <div class="quiz-stat-item">
+              <span>📋 Tổng số câu hỏi:</span>
+              <strong id="quizTotalCount" style="color: #6366f1;">0</strong>
+            </div>
+            <div class="quiz-stat-item">
+              <span>✔️ Đã đúng:</span>
+              <strong id="quizCorrectCount" style="color: #16a34a;">0</strong>
+            </div>
+            <div class="quiz-stat-item">
+              <span>❌ Cần ôn lại:</span>
+              <strong id="quizWrongCount" style="color: #dc2626;">0</strong>
+            </div>
+            <button class="nav-btn" id="btnResetConfig" style="font-size: 0.85rem; padding: 4px 12px;">
+              ⚙️ Nhập danh sách khác
+            </button>
+          </div>
+
+          <!-- Lưới hiển thị các thẻ ký tự -->
+          <div class="char-cards-grid" id="charCardsGrid">
+            <!-- Từng thẻ ký tự sẽ được tạo tự động -->
+          </div>
+
+          <button class="btn-finish-quiz" id="btnFinishQuiz">
+            <span>🏁 HOÀN THÀNH & TỔNG KẾT ĐÁNH GIÁ</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         MÀN HÌNH TỔNG KẾT CHUNG (SUMMARY SCREEN)
+         ========================================================= -->
+    <section class="screen" id="screenSummary">
       <div class="summary-card">
         <div class="trophy-icon">🏆</div>
-        <h2 style="font-family: 'Sigmar', cursive; color: #333; margin-top: 10px;">XUẤT SẮC QUÁ BÉ ƠI!</h2>
+        <h2 style="font-family: 'Sigmar', cursive; color: #1e293b; margin-top: 10px;" id="summaryTitle">XUẤT SẮC QUÁ BÉ ƠI!</h2>
         
-        <div class="final-score" id="finalScoreVal">10 / 10</div>
-        <p class="final-comment" id="finalCommentText">Bé nhận biết chữ số siêu đỉnh luôn nghen!</p>
+        <div style="font-size: 2.8rem; font-family: 'Sigmar', cursive; color: #FF5E7E; margin: 0.5rem 0;" id="summaryScoreVal">
+          10 / 10
+        </div>
+        
+        <p style="font-size: 1.2rem; font-weight: 700; color: #475569; margin-bottom: 1.2rem;" id="summaryComment">
+          Bé nhận biết chữ số siêu đỉnh luôn nghen!
+        </p>
 
-        <button class="btn-play-large" id="btnRestartGame">
-          <span>🔄 CHƠI LẠI VÒNG MỚI NÈ</span>
-        </button>
+        <div class="summary-stats-box" id="summaryStatsDetails" style="display: none;">
+          <div class="stat-pill-box box-green">
+            <div style="font-size: 1.8rem; font-weight: 800;" id="sumCorrectBadge">0</div>
+            <div style="font-weight: 700;">Ký tự đọc đúng ✔️</div>
+          </div>
+          <div class="stat-pill-box box-red">
+            <div style="font-size: 1.8rem; font-weight: 800;" id="sumWrongBadge">0</div>
+            <div style="font-weight: 700;">Ký tự cần ôn lại ❌</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; width: 100%; margin-top: 0.8rem;">
+          <button class="btn-play-large" id="btnRestartCurrentGame" style="flex: 1; padding: 0.9rem 1.4rem; font-size: 1.15rem;">
+            <span>🔄 Chơi Lại</span>
+          </button>
+          <button class="nav-btn" id="btnBackHomeFromSummary" style="flex: 1; justify-content: center; font-size: 1.1rem; border-radius: 30px;">
+            <span>🏠 Về Menu</span>
+          </button>
+        </div>
       </div>
     </section>
 
   </div>
 
+  <!-- SCRIPT ÂM THANH & LOGIC GAME -->
   <script>
 {js_content}
 
@@ -676,9 +1188,6 @@ html_content = f"""<!DOCTYPE html>
     let currentAudioObj = null;
 
     function playVoice(key, onEndCallback) {{
-      const speakerBtn = document.getElementById('btnSpeakNumber');
-      if (speakerBtn) speakerBtn.classList.add('speaking');
-
       if (currentAudioObj) {{
         currentAudioObj.pause();
         currentAudioObj.currentTime = 0;
@@ -688,23 +1197,18 @@ html_content = f"""<!DOCTYPE html>
       currentAudioObj = new Audio(audioSrc);
 
       currentAudioObj.onended = () => {{
-        if (speakerBtn) speakerBtn.classList.remove('speaking');
         if (onEndCallback) onEndCallback();
       }};
-
-      currentAudioObj.onerror = (e) => {{
-        console.warn('Lỗi phát audio nhúng:', e);
-        if (speakerBtn) speakerBtn.classList.remove('speaking');
+      currentAudioObj.onerror = () => {{
         if (onEndCallback) onEndCallback();
       }};
 
       currentAudioObj.play().catch(err => {{
-        console.log('Chờ bé tương tác để phát âm thanh:', err);
-        if (speakerBtn) speakerBtn.classList.remove('speaking');
+        console.log('Chờ tương tác để phát audio:', err);
       }});
     }}
 
-    /* Web Audio Effects */
+    /* Web Audio Effects (Tone synthesis) */
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
     function playTone(freq, duration, type = 'sine', gainVal = 0.25) {{
@@ -724,7 +1228,7 @@ html_content = f"""<!DOCTYPE html>
     function playVictoryChime() {{
       const notes = [523.25, 659.25, 783.99, 1046.50];
       notes.forEach((freq, idx) => {{
-        setTimeout(() => playTone(freq, 0.25, 'triangle', 0.3), idx * 90);
+        setTimeout(() => playTone(freq, 0.25, 'triangle', 0.25), idx * 85);
       }});
     }}
 
@@ -734,20 +1238,20 @@ html_content = f"""<!DOCTYPE html>
       const gain = audioCtx.createGain();
       osc.type = 'sawtooth';
       osc.frequency.setValueAtTime(260, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.35);
+      osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.3);
       gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+      gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
       osc.connect(gain);
       gain.connect(audioCtx.destination);
       osc.start();
-      osc.stop(audioCtx.currentTime + 0.35);
+      osc.stop(audioCtx.currentTime + 0.3);
     }}
 
     function playBubblePop() {{
       playTone(600 + Math.random() * 200, 0.08, 'sine', 0.2);
     }}
 
-    /* Pháo hoa Canvas */
+    /* Canvas Fireworks */
     const canvas = document.getElementById('fireworksCanvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -761,24 +1265,17 @@ html_content = f"""<!DOCTYPE html>
 
     class FireworkParticle {{
       constructor(x, y, color) {{
-        this.x = x;
-        this.y = y;
-        this.color = color;
+        this.x = x; this.y = y; this.color = color;
         const angle = Math.random() * Math.PI * 2;
         const speed = Math.random() * 7 + 2;
         this.vx = Math.cos(angle) * speed;
         this.vy = Math.sin(angle) * speed;
-        this.alpha = 1;
-        this.friction = 0.96;
-        this.gravity = 0.15;
+        this.alpha = 1; this.friction = 0.96; this.gravity = 0.15;
         this.size = Math.random() * 4 + 2;
       }}
       update() {{
-        this.vx *= this.friction;
-        this.vy *= this.friction;
-        this.vy += this.gravity;
-        this.x += this.vx;
-        this.y += this.vy;
+        this.vx *= this.friction; this.vy *= this.friction;
+        this.vy += this.gravity; this.x += this.vx; this.y += this.vy;
         this.alpha -= 0.018;
       }}
       draw() {{
@@ -823,7 +1320,7 @@ html_content = f"""<!DOCTYPE html>
 
       if (typeof confetti === 'function') {{
         confetti({{
-          particleCount: 80,
+          particleCount: 75,
           spread: 80,
           origin: {{
             x: originX ? originX / window.innerWidth : 0.5,
@@ -834,167 +1331,469 @@ html_content = f"""<!DOCTYPE html>
       }}
     }}
 
-    /* Game Controller */
-    const TOTAL_ROUNDS = 10;
-    let currentRound = 1;
-    let score = 0;
-    let currentTargetNumber = null;
-    let isWaitingAnswer = false;
+    /* =========================================================
+     *  ĐIỀU HƯỚNG MÀN HÌNH (ROUTER / NAVIGATION)
+     * ========================================================= */
+    const screenHome = document.getElementById('screenHome');
+    const screenGame1 = document.getElementById('screenGame1');
+    const screenGame2 = document.getElementById('screenGame2');
+    const screenSummary = document.getElementById('screenSummary');
 
-    const startScreen = document.getElementById('startScreen');
-    const gameScreen = document.getElementById('gameScreen');
-    const summaryScreen = document.getElementById('summaryScreen');
+    const btnNavHome = document.getElementById('btnNavHome');
+    const btnNavMenu = document.getElementById('btnNavMenu');
+    const btnNavGame1 = document.getElementById('btnNavGame1');
+    const btnNavGame2 = document.getElementById('btnNavGame2');
 
-    const scoreVal = document.getElementById('scoreVal');
-    const roundIndicator = document.getElementById('roundIndicator');
-    const bubbleArena = document.getElementById('bubbleArena');
-    const btnSpeakNumber = document.getElementById('btnSpeakNumber');
-    const feedbackBanner = document.getElementById('feedbackBanner');
-    const feedbackText = document.getElementById('feedbackText');
-    const feedbackIcon = document.getElementById('feedbackIcon');
+    let currentActiveGame = 'game1'; // 'game1' | 'game2'
 
-    function showScreen(screen) {{
-      [startScreen, gameScreen, summaryScreen].forEach(s => s.classList.remove('active'));
-      screen.classList.add('active');
+    function navigateTo(targetScreen) {{
+      [screenHome, screenGame1, screenGame2, screenSummary].forEach(s => s.classList.remove('active'));
+      targetScreen.classList.add('active');
+
+      // Update nav buttons
+      [btnNavMenu, btnNavGame1, btnNavGame2].forEach(b => b.classList.remove('active'));
+      if (targetScreen === screenHome) btnNavMenu.classList.add('active');
+      else if (targetScreen === screenGame1) btnNavGame1.classList.add('active');
+      else if (targetScreen === screenGame2) btnNavGame2.classList.add('active');
+
+      window.scrollTo({{ top: 0, behavior: 'smooth' }});
     }}
 
-    function generateBubbleNumbers(target) {{
-      const numbers = [target];
+    btnNavHome.addEventListener('click', () => navigateTo(screenHome));
+    btnNavMenu.addEventListener('click', () => navigateTo(screenHome));
+    btnNavGame1.addEventListener('click', () => {{
+      currentActiveGame = 'game1';
+      navigateTo(screenGame1);
+      startRound1();
+    }});
+    btnNavGame2.addEventListener('click', () => {{
+      currentActiveGame = 'game2';
+      navigateTo(screenGame2);
+    }});
+
+    document.getElementById('cardChooseGame1').addEventListener('click', () => {{
+      currentActiveGame = 'game1';
+      navigateTo(screenGame1);
+      startRound1();
+    }});
+    document.getElementById('cardChooseGame2').addEventListener('click', () => {{
+      currentActiveGame = 'game2';
+      navigateTo(screenGame2);
+    }});
+
+    document.getElementById('btnBackToHomeFromG1').addEventListener('click', () => navigateTo(screenHome));
+    document.getElementById('btnBackHomeFromSummary').addEventListener('click', () => navigateTo(screenHome));
+
+    /* =========================================================
+     *  TRÒ CHƠI 1: BÉ VUI ĐOÁN SỐ (1-10)
+     * ========================================================= */
+    const TOTAL_ROUNDS_1 = 10;
+    let currentRound1 = 1;
+    let score1 = 0;
+    let currentTargetNumber1 = null;
+    let isWaitingAnswer1 = false;
+
+    const scoreVal1 = document.getElementById('scoreVal1');
+    const roundIndicator1 = document.getElementById('roundIndicator1');
+    const bubbleArena1 = document.getElementById('bubbleArena1');
+    const btnSpeakNumber1 = document.getElementById('btnSpeakNumber1');
+    const feedbackBanner1 = document.getElementById('feedbackBanner1');
+    const feedbackText1 = document.getElementById('feedbackText1');
+    const feedbackIcon1 = document.getElementById('feedbackIcon1');
+
+    function startRound1() {{
+      isWaitingAnswer1 = true;
+      feedbackBanner1.className = 'feedback-banner';
+
+      roundIndicator1.textContent = `Vòng ${{currentRound1}} / ${{TOTAL_ROUNDS_1}}`;
+      currentTargetNumber1 = Math.floor(Math.random() * 10) + 1;
+
+      // Sinh 5 bong bóng
+      const numbers = [currentTargetNumber1];
       while (numbers.length < 5) {{
-        const rand = Math.floor(Math.random() * 10) + 1;
-        if (!numbers.includes(rand)) {{
-          numbers.push(rand);
-        }}
+        const r = Math.floor(Math.random() * 10) + 1;
+        if (!numbers.includes(r)) numbers.push(r);
       }}
       for (let i = numbers.length - 1; i > 0; i--) {{
         const j = Math.floor(Math.random() * (i + 1));
         [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
       }}
-      return numbers;
+
+      bubbleArena1.innerHTML = '';
+      numbers.forEach((num, index) => {{
+        const b = document.createElement('div');
+        b.className = `number-bubble bubble-theme-${{(index % 5) + 1}}`;
+        b.textContent = num;
+        b.addEventListener('click', (e) => handleBubbleClick1(b, num, e));
+        bubbleArena1.appendChild(b);
+      }});
+
+      setTimeout(() => speakCurrentTarget1(), 400);
     }}
 
-    function startRound() {{
-      isWaitingAnswer = true;
-      hideFeedback();
-
-      roundIndicator.textContent = `Vòng ${{currentRound}} / ${{TOTAL_ROUNDS}}`;
-      currentTargetNumber = Math.floor(Math.random() * 10) + 1;
-
-      const bubbleNumbers = generateBubbleNumbers(currentTargetNumber);
-      renderBubbles(bubbleNumbers);
-
-      setTimeout(() => {{
-        speakCurrentTarget();
-      }}, 400);
-    }}
-
-    function speakCurrentTarget() {{
-      if (currentTargetNumber !== null) {{
-        playVoice(currentTargetNumber.toString());
+    function speakCurrentTarget1() {{
+      if (currentTargetNumber1 !== null) {{
+        btnSpeakNumber1.classList.add('speaking');
+        playVoice(currentTargetNumber1.toString(), () => {{
+          btnSpeakNumber1.classList.remove('speaking');
+        }});
       }}
     }}
 
-    function renderBubbles(numbers) {{
-      bubbleArena.innerHTML = '';
-      numbers.forEach((num, index) => {{
-        const bubble = document.createElement('div');
-        bubble.className = `number-bubble bubble-theme-${{(index % 5) + 1}}`;
-        bubble.textContent = num;
-        bubble.dataset.number = num;
+    btnSpeakNumber1.addEventListener('click', () => speakCurrentTarget1());
 
-        bubble.addEventListener('click', (e) => handleBubbleClick(bubble, num, e));
-        bubbleArena.appendChild(bubble);
-      }});
-    }}
-
-    function handleBubbleClick(bubbleElement, selectedNumber, event) {{
-      if (!isWaitingAnswer) return;
-
+    function handleBubbleClick1(bubbleEl, selectedNum, e) {{
+      if (!isWaitingAnswer1) return;
       playBubblePop();
 
-      if (selectedNumber === currentTargetNumber) {{
-        isWaitingAnswer = false;
-        score += 10;
-        scoreVal.textContent = score;
+      if (selectedNum === currentTargetNumber1) {{
+        isWaitingAnswer1 = false;
+        score1 += 10;
+        scoreVal1.textContent = score1;
 
-        bubbleElement.classList.add('bubble-correct');
-
-        const rect = bubbleElement.getBoundingClientRect();
-        const originX = rect.left + rect.width / 2;
-        const originY = rect.top + rect.height / 2;
-        triggerCelebration(originX, originY);
+        bubbleEl.classList.add('bubble-correct');
+        const rect = bubbleEl.getBoundingClientRect();
+        triggerCelebration(rect.left + rect.width / 2, rect.top + rect.height / 2);
         playVictoryChime();
 
-        showFeedback('Đúng rồi nè! Bé giỏi quá chừng luôn! 🎉', 'correct');
+        feedbackBanner1.className = 'feedback-banner show correct';
+        feedbackIcon1.textContent = '🎉';
+        feedbackText1.textContent = 'Đúng rồi nè! Bé giỏi quá chừng luôn!';
         playVoice('correct');
 
         setTimeout(() => {{
-          if (currentRound < TOTAL_ROUNDS) {{
-            currentRound++;
-            startRound();
+          if (currentRound1 < TOTAL_ROUNDS_1) {{
+            currentRound1++;
+            startRound1();
           }} else {{
-            finishGame();
+            finishGame1();
           }}
         }}, 2200);
 
       }} else {{
-        bubbleElement.classList.add('bubble-shake');
+        bubbleEl.classList.add('bubble-shake');
         playWrongSound();
 
-        showFeedback('Chưa đúng rồi nghen, bé chọn lại nha! 💡', 'wrong');
+        feedbackBanner1.className = 'feedback-banner show wrong';
+        feedbackIcon1.textContent = '💡';
+        feedbackText1.textContent = 'Chưa đúng rồi nghen, bé chọn lại nha!';
         playVoice('wrong');
 
-        setTimeout(() => {{
-          bubbleElement.classList.remove('bubble-shake');
-        }}, 800);
+        setTimeout(() => bubbleEl.classList.remove('bubble-shake'), 800);
       }}
     }}
 
-    function showFeedback(msg, type) {{
-      feedbackBanner.className = `feedback-banner show ${{type}}`;
-      feedbackText.textContent = msg;
-      feedbackIcon.textContent = type === 'correct' ? '🎉' : '💡';
-    }}
-
-    function hideFeedback() {{
-      feedbackBanner.className = 'feedback-banner';
-    }}
-
-    function finishGame() {{
-      showScreen(summaryScreen);
-      document.getElementById('finalScoreVal').textContent = `${{score}} / ${{TOTAL_ROUNDS * 10}}`;
-
-      let comment = 'Bé cố gắng luyện thêm với cô nghen! Rất chăm chỉ nè! 👏';
-      if (score >= 90) {{
-        comment = 'Trời ơi xuất sắc quá chừng! Bé nhớ hết các số rồi nghen! 🏆🎈';
-      }} else if (score >= 70) {{
-        comment = 'Bé nghe số rất chuẩn xác luôn đó nè! Giỏi lắm! 🌟';
-      }}
-      document.getElementById('finalCommentText').textContent = comment;
+    function finishGame1() {{
+      navigateTo(screenSummary);
+      document.getElementById('summaryTitle').textContent = 'HOÀN THÀNH ĐOÁN SỐ!';
+      document.getElementById('summaryScoreVal').textContent = `${{score1}} / ${{TOTAL_ROUNDS_1 * 10}} Điểm`;
+      document.getElementById('summaryComment').textContent = score1 >= 90 
+        ? 'Trời ơi xuất sắc quá chừng! Bé nhớ hết các số rồi nghen! 🏆' 
+        : 'Bé nhận biết chữ số rất tốt luôn nè, tiếp tục phát huy nha! 🌟';
+      document.getElementById('summaryStatsDetails').style.display = 'none';
 
       triggerCelebration();
-      setTimeout(triggerCelebration, 600);
-
       playVoice('finish');
     }}
 
-    function resetGame() {{
-      score = 0;
-      currentRound = 1;
-      scoreVal.textContent = score;
-      showScreen(gameScreen);
-      startRound();
-    }}
+    /* =========================================================
+     *  TRÒ CHƠI 2: ĐÂY LÀ SỐ GÌ? ĐÂY LÀ CHỮ GÌ? (LOGIC MỚI)
+     * ========================================================= */
+    let quizItems = []; // Danh sách ký tự đang hỏi: [{{ char: 'A', type: 'letter', status: null }}, ...]
+    let lastHoveredChar = null;
+    let hoverAudioTimeout = null;
 
-    document.getElementById('btnStartGame').addEventListener('click', resetGame);
-    document.getElementById('btnRestartGame').addEventListener('click', resetGame);
+    const parentConfigBox = document.getElementById('parentConfigBox');
+    const quizActiveArea = document.getElementById('quizActiveArea');
+    const inputCustomChars = document.getElementById('inputCustomChars');
+    const btnStartQuiz = document.getElementById('btnStartQuiz');
+    const charCardsGrid = document.getElementById('charCardsGrid');
 
-    btnSpeakNumber.addEventListener('click', () => {{
-      speakCurrentTarget();
+    const quizTotalCount = document.getElementById('quizTotalCount');
+    const quizCorrectCount = document.getElementById('quizCorrectCount');
+    const quizWrongCount = document.getElementById('quizWrongCount');
+    const btnFinishQuiz = document.getElementById('btnFinishQuiz');
+    const btnResetConfig = document.getElementById('btnResetConfig');
+
+    // Các mẫu Presets chọn nhanh
+    const PRESETS = {{
+      digits_all: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+      letters_az: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y'],
+      vowels: ['A', 'E', 'I', 'O', 'U'],
+      rand_5: () => {{
+        const pool = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','M','N','P','S','T'];
+        return pool.sort(() => 0.5 - Math.random()).slice(0, 5);
+      }},
+      rand_10: () => {{
+        const pool = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','K','L','M','N','O','P','Q','R','S','T','U','V','X','Y','Z'];
+        return pool.sort(() => 0.5 - Math.random()).slice(0, 10);
+      }},
+      mix_common: ['0', '1', '2', '5', '9', 'A', 'B', 'C', 'D', 'E']
+    }};
+
+    document.querySelectorAll('.preset-chip').forEach(btn => {{
+      btn.addEventListener('click', () => {{
+        const presetKey = btn.dataset.preset;
+        let list = PRESETS[presetKey];
+        if (typeof list === 'function') list = list();
+        inputCustomChars.value = list.join(', ');
+      }});
     }});
 
-    document.getElementById('btnSoundTest').addEventListener('click', () => {{
-      playVoice('intro');
+    // Phân tích chuỗi người dùng nhập thành danh sách ký tự chuẩn
+    function parseCustomInput(rawText) {{
+      const cleaned = rawText.toUpperCase().replace(/[^0-9A-Z, ]/g, '');
+      const parts = cleaned.split(/[, ]+/).filter(Boolean);
+      const result = [];
+
+      parts.forEach(p => {{
+        // Nếu nhập chuỗi liền như 'ABC' hoặc '123'
+        for (let char of p) {{
+          if (/^[0-9]$/.test(char)) {{
+            result.push({{ char, type: 'number', status: null }});
+          }} else if (/^[A-Z]$/.test(char)) {{
+            result.push({{ char, type: 'letter', status: null }});
+          }}
+        }}
+      }});
+
+      return result;
+    }}
+
+    btnStartQuiz.addEventListener('click', () => {{
+      const parsed = parseCustomInput(inputCustomChars.value);
+      if (parsed.length === 0) {{
+        alert('Phụ huynh vui lòng nhập ít nhất 1 chữ cái (A-Z) hoặc chữ số (0-9) để đố bé nhé!');
+        return;
+      }}
+
+      quizItems = parsed;
+      renderQuizCards();
+      parentConfigBox.style.display = 'none';
+      quizActiveArea.classList.add('show');
+      updateQuizStats();
+    }});
+
+    btnResetConfig.addEventListener('click', () => {{
+      quizActiveArea.classList.remove('show');
+      parentConfigBox.style.display = 'block';
+    }});
+
+    // Vẽ danh sách thẻ ký tự lên màn hình
+    function renderQuizCards() {{
+      charCardsGrid.innerHTML = '';
+
+      quizItems.forEach((item, index) => {{
+        const card = document.createElement('div');
+        card.className = 'char-card';
+        card.dataset.index = index;
+
+        // Huy hiệu loại (Số hay Chữ)
+        const pill = document.createElement('div');
+        pill.className = `char-type-pill ${{item.type === 'number' ? 'pill-number' : 'pill-letter'}}`;
+        pill.textContent = item.type === 'number' ? 'Chữ Số' : 'Chữ Cái';
+
+        // Ký tự hiển thị to
+        const glyph = document.createElement('div');
+        glyph.className = 'char-glyph';
+        glyph.textContent = item.char;
+
+        // Chỉ dẫn hover
+        const hint = document.createElement('div');
+        hint.className = 'hover-speaker-hint';
+        hint.innerHTML = '<span>🔊</span><span>Di chuột để hỏi</span>';
+
+        // Nút nghe phát âm mẫu
+        const btnSample = document.createElement('button');
+        btnSample.className = 'btn-reveal-sample';
+        btnSample.innerHTML = '🎧 Nghe đáp án mẫu';
+        btnSample.addEventListener('click', (e) => {{
+          e.stopPropagation();
+          playSampleAudio(item);
+        }});
+
+        // Khu vực Phụ Huynh Đánh Giá (✔️ / ❌)
+        const evalBox = document.createElement('div');
+        evalBox.className = 'parent-eval-controls';
+        evalBox.innerHTML = '<div class="eval-label">Phụ huynh đánh giá:</div>';
+
+        const evalBtnGroup = document.createElement('div');
+        evalBtnGroup.className = 'eval-btn-group';
+
+        const btnCorrect = document.createElement('button');
+        btnCorrect.className = `btn-eval btn-eval-correct ${{item.status === 'correct' ? 'selected' : ''}}`;
+        btnCorrect.innerHTML = '<span>✔️</span> Đúng';
+        btnCorrect.addEventListener('click', (e) => {{
+          e.stopPropagation();
+          handleEvaluate(index, 'correct', card);
+        }});
+
+        const btnWrong = document.createElement('button');
+        btnWrong.className = `btn-eval btn-eval-wrong ${{item.status === 'wrong' ? 'selected' : ''}}`;
+        btnWrong.innerHTML = '<span>❌</span> Chưa đúng';
+        btnWrong.addEventListener('click', (e) => {{
+          e.stopPropagation();
+          handleEvaluate(index, 'wrong', card);
+        }});
+
+        evalBtnGroup.appendChild(btnCorrect);
+        evalBtnGroup.appendChild(btnWrong);
+        evalBox.appendChild(evalBtnGroup);
+        evalBox.appendChild(btnSample);
+
+        card.appendChild(pill);
+        card.appendChild(glyph);
+        card.appendChild(hint);
+        card.appendChild(evalBox);
+
+        // =========================================================
+        // SỰ KIỆN DI CHUỘT (HOVER) -> PHÁT GIỌNG ĐỌC HỎI BÉ!
+        // =========================================================
+        card.addEventListener('mouseenter', () => {{
+          handleCardHover(item, card);
+        }});
+
+        card.addEventListener('mouseleave', () => {{
+          card.classList.remove('hover-speaking');
+        }});
+
+        // Hỗ trợ cả thao tác chạm/click trên iPad/Điện thoại
+        card.addEventListener('click', () => {{
+          handleCardHover(item, card);
+        }});
+
+        charCardsGrid.appendChild(card);
+      }});
+    }}
+
+    // Xử lý khi di chuột vào thẻ: Tự động hỏi "Đây là số gì?" hoặc "Đây là chữ gì?"
+    function handleCardHover(item, cardElement) {{
+      cardElement.classList.add('hover-speaking');
+
+      // Giới hạn để không phát lặp liên tục nếu giữ chuột lâu
+      clearTimeout(hoverAudioTimeout);
+      hoverAudioTimeout = setTimeout(() => {{
+        if (item.type === 'number') {{
+          // Phát câu hỏi: "Đây là số gì?"
+          playVoice('hoi_so', () => {{
+            cardElement.classList.remove('hover-speaking');
+          }});
+        }} else {{
+          // Phát câu hỏi: "Đây là chữ gì?"
+          playVoice('hoi_chu', () => {{
+            cardElement.classList.remove('hover-speaking');
+          }});
+        }}
+      }}, 50);
+    }}
+
+    // Phát âm chuẩn mẫu của ký tự đó
+    function playSampleAudio(item) {{
+      if (item.type === 'number') {{
+        playVoice(item.char);
+      }} else {{
+        const letterKey = `letter_${{item.char.toLowerCase()}}`;
+        playVoice(letterKey);
+      }}
+    }}
+
+    // Phụ huynh đánh giá kết quả của bé
+    function handleEvaluate(index, status, cardElement) {{
+      quizItems[index].status = status;
+
+      cardElement.classList.remove('evaluated-correct', 'evaluated-wrong');
+      const btnCorrect = cardElement.querySelector('.btn-eval-correct');
+      const btnWrong = cardElement.querySelector('.btn-eval-wrong');
+
+      btnCorrect.classList.remove('selected');
+      btnWrong.classList.remove('selected');
+
+      if (status === 'correct') {{
+        cardElement.classList.add('evaluated-correct');
+        btnCorrect.classList.add('selected');
+
+        const rect = cardElement.getBoundingClientRect();
+        triggerCelebration(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        playVictoryChime();
+
+        // Khen ngợi bé
+        setTimeout(() => {{
+          playVoice('correct_eval');
+        }}, 350);
+
+      }} else {{
+        cardElement.classList.add('evaluated-wrong');
+        btnWrong.classList.add('selected');
+        cardElement.classList.add('bubble-shake');
+        playWrongSound();
+
+        // Động viên bé
+        setTimeout(() => {{
+          playVoice('wrong_eval');
+        }}, 300);
+
+        setTimeout(() => cardElement.classList.remove('bubble-shake'), 700);
+      }}
+
+      updateQuizStats();
+    }}
+
+    function updateQuizStats() {{
+      const total = quizItems.length;
+      const correct = quizItems.filter(i => i.status === 'correct').length;
+      const wrong = quizItems.filter(i => i.status === 'wrong').length;
+
+      quizTotalCount.textContent = total;
+      quizCorrectCount.textContent = correct;
+      quizWrongCount.textContent = wrong;
+    }}
+
+    // Bấm hoàn thành bài đố
+    btnFinishQuiz.addEventListener('click', () => {{
+      const total = quizItems.length;
+      const correct = quizItems.filter(i => i.status === 'correct').length;
+      const wrong = quizItems.filter(i => i.status === 'wrong').length;
+
+      navigateTo(screenSummary);
+      document.getElementById('summaryTitle').textContent = 'KẾT QUẢ ĐỐ BÉ!';
+      document.getElementById('summaryScoreVal').textContent = `${{correct}} / ${{total}} Đúng`;
+      
+      let comment = 'Bé rất cố gắng! Cùng ba mẹ ôn lại các ký tự chưa đúng nhé! 👏';
+      if (correct === total) {{
+        comment = 'Tuyệt đỉnh! Bé đã nhận biết chính xác 100% tất cả số và chữ! 🏆🌟';
+        triggerCelebration();
+        playVoice('finish');
+      }} else if (correct >= total * 0.7) {{
+        comment = 'Bé giỏi quá chừng! Đa số các ký tự bé đều nhận biết chuẩn xác nè! 🎉';
+        triggerCelebration();
+        playVoice('correct_eval');
+      }} else {{
+        playVoice('wrong_eval');
+      }}
+
+      document.getElementById('summaryComment').textContent = comment;
+
+      // Chi tiết thống kê
+      document.getElementById('summaryStatsDetails').style.display = 'grid';
+      document.getElementById('sumCorrectBadge').textContent = correct;
+      document.getElementById('sumWrongBadge').textContent = wrong;
+    }});
+
+    // Nút chơi lại trên màn hình tổng kết
+    document.getElementById('btnRestartCurrentGame').addEventListener('click', () => {{
+      if (currentActiveGame === 'game1') {{
+        score1 = 0;
+        currentRound1 = 1;
+        scoreVal1.textContent = '0';
+        navigateTo(screenGame1);
+        startRound1();
+      }} else {{
+        // Reset trạng thái quiz
+        quizItems.forEach(i => i.status = null);
+        renderQuizCards();
+        updateQuizStats();
+        navigateTo(screenGame2);
+      }}
     }});
   </script>
 </body>
@@ -1005,4 +1804,4 @@ out_html = os.path.join(base_dir, "index.html")
 with open(out_html, "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("Build complete: index.html updated successfully with 100% embedded audio!")
+print("Build complete: Menu and Game 2 integrated seamlessly into index.html!")
